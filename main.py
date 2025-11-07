@@ -19,6 +19,7 @@ class process:
         filename = path + '/MOULD_SUMMARY.TXT'
         with open(filename, "r") as file:
             content = file.read()
+            content = content.replace('\x1a', '')
             self.date, content = get_date(content)
 
             reports = content.split('---')
@@ -36,6 +37,7 @@ class process:
         filename = path + '/' + filename
         with open(filename, "r") as file:
             content = file.read()
+            content = content.replace('\x1a', '')
             self.date, content = get_date(content)
             
             self.get_info(content)
@@ -60,12 +62,6 @@ def main():
             temp.fetch_mould_summary(path_to_data)
         else:
             temp.fetch_others_summary(path_to_data, process_data)
-
-        print(process_data)
-        print(temp.date)
-        print(temp.products[-5:])
-        print(temp.good_pcs[-5:])
-        print()
 
 
 if __name__ == '__main__':
