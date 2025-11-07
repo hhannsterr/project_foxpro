@@ -28,7 +28,7 @@ This project automates the data collection and reporting workflow for production
 2. **Install dependecies**
 
     ```
-    pip install -r requirements.txt
+    python -m pip install -r requirements.txt
     ```
     📁 Project Structure
     ```.
