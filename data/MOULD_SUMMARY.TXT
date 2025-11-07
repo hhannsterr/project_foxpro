@@ -1,8 +1,6 @@
 
 mold  01/10/2025
 -----
-MOULDING NEW
-Selected 227 records in 0.00 seconds
 ---
 ABBBU1121            10,318
 ABBBU112114           7,991
@@ -232,8 +230,6 @@ ESBUA114              3,076
 ESBUA2                2,457
 ESBUA212                545
 ---
-MOULDING OLD
-Selected 116 records in 0.00 seconds
 ---
 ABBBU112              8,052
 ABBBU1214             7,978
