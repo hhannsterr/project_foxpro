@@ -49,18 +49,23 @@ def get_date(content: str) -> tuple[str]:
 
 def main():
 
-    path = "D:/BIS"
+    path_to_foxp = "D:/BIS"
+    path_to_data = 'data'
 
-    mould = process()
-    mould.fetch_mould_summary(path)
+    processes_data = os.listdir(path_to_data)
 
-    melt = process()
-    melt.fetch_others_summary(path, filename='MELT_SUMMARY.TXT')
+    for process_data in processes_data:
+        temp = process()
+        if process_data == 'MOULD_SUMMARY.TXT':
+            temp.fetch_mould_summary(path_to_data)
+        else:
+            temp.fetch_others_summary(path_to_data, process_data)
 
-    print(melt.products)
-    print(melt.good_pcs)
-    print(melt.date)
-
+        print(process_data)
+        print(temp.date)
+        print(temp.products[-5:])
+        print(temp.good_pcs[-5:])
+        print()
 
 
 if __name__ == '__main__':
