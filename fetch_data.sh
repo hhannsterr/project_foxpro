@@ -3,8 +3,8 @@
 echo "Starting Foxpro Data Fetch..."
 
 VFP_PATH="C:\\Program Files (x86)\\Microsoft Visual FoxPro 9\\vfp9.exe"
-USERNAME="HAN"
-PASSWORD="12345"
+USERNAME="your_username"
+PASSWORD="your_password"
 
 TEMP_PRG=$(mktemp).prg
 cat > "$TEMP_PRG" << EOF
