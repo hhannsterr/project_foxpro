@@ -47,11 +47,9 @@ def get_date(content: str) -> tuple[str]:
 
 def main():
 
-    path_to_foxp = "D:/BIS"
     path_to_data = 'data'
 
     process_paths = os.listdir(path_to_data)
-
     for process_path in process_paths:
         temp = process()
         temp.fetch_summary(path_to_data, process_path)
