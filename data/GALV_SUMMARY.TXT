@@ -1,0 +1,32 @@
+
+galv. 01/11/2025
+-----
+ABGF112                 112
+ABGF2                   202
+ABGRS32                  31
+ABGRT13434              624
+BBGL901               6,126
+BBGL90112             1,815
+BBGL90114               976
+BBGL9034              1,711
+BBGRT1121121              97
+BBGRT221                506
+BBGRT343412             740
+BBGS1                 1,768
+BBGT1                   325
+BBGT34                1,610
+EAGBU2122               298
+EAGRX2112               132
+EAGUA1                1,074
+EBGL9034                827
+EBGNI1                1,335
+EBGNI112                608
+EBGNI2                  459
+EBGP114                 952
+EBGRNI112114             950
+EBGRNI3412            1,471
+EBGSL901              2,463
+EBGT112                 703
+EBGT114                 922
+EBGT2                   423
+EEGUN112                680
