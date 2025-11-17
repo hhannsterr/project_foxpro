@@ -1,0 +1,9 @@
+# Foxpro
+DATA_PATH=""
+VFP_PATH=""
+OUTPUT_PATH=""
+USERNAME=""
+PASSWORD=""
+
+# Excel
+EXCEL_PATH=""
