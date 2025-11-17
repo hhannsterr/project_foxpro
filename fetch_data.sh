@@ -2,14 +2,17 @@
 
 echo "Starting Foxpro Data Fetch..."
 
-DATA_PATH="D:\BIS"
-VFP_PATH="C:\\Program Files (x86)\\Microsoft Visual FoxPro 9\\vfp9.exe"
-USERNAME="your_username"
-PASSWORD="your_password"
+source .env
 
 TEMP_PRG=$(mktemp).prg
 cat > "$TEMP_PRG" << EOF
 SET DEFAULT TO $DATA_PATH
+
+TODAY = DATE()
+OSDT = DATE(2025, 11, 01)
+OEDT = TODAY - 1
+OUTPUT_PATH = '$OUTPUT_PATH'
+DATA_PATH = '$DATA_PATH'
 
 KEYBOARD '{ENTER}{TAB}$USERNAME{ENTER}$PASSWORD{ENTER}'
 
