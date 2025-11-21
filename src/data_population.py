@@ -23,6 +23,16 @@ class process:
             self.products.append(product)
             self.good_pcs.append(good_pc)
 
+    def get_info_gal(self, report: str) -> None:
+        items = report.strip().split('\n')
+        bg_index, next_index = 2, 3
+
+        for item in items:
+            product, good_pc = item.strip().split()
+            product = product[:bg_index] + 'b' + product[next_index:]
+            self.products.append(product)
+            self.good_pcs.append(good_pc)
+
     def fetch_summary(self, path: str, filename: str) -> None:
 
         full_path = path + '/' + filename
@@ -31,7 +41,10 @@ class process:
             content = content.replace('\x1a', '')
             self.date, content = get_date(content)
 
-            if not is_mould(filename):
+            if is_gal(filename):
+                self.get_info_gal(content)
+
+            elif not is_mould(filename):
                 self.get_info(content)
 
             else:
@@ -71,6 +84,9 @@ class process:
             row_num += 1
 
 
+def is_gal(filename: str) -> bool:
+    return filename == 'GALV_SUMMARY.TXT'
+
 def is_mould(filename: str) -> bool:
     return filename == 'MOULD_SUMMARY.TXT'
 
@@ -79,11 +95,7 @@ def get_date(content: str) -> tuple[str]:
     return date.strip(), content.strip()
 
 def is_monday() -> bool:
-    day_of_week = datetime.now().weekday()
-    if day_of_week == 0:
-        return True
-    else:
-        return False
+    return datetime.now().weekday() == 0
 
 def load_excel(excel_path: str, sheet_name: str):
     workbook = load_workbook(excel_path)
