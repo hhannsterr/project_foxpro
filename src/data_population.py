@@ -1,6 +1,3 @@
-import os
-import warnings
-
 from datetime import datetime
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill, Font
