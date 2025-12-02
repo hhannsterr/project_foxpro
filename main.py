@@ -11,8 +11,8 @@ def main():
 
     config = dotenv_values('.env')
 
-    # os.environ['DAY_TYPE'] = '2' if is_monday() else '1'
-    subprocess.call(['bash', './fetch_data.sh'])
+    day = '2' if is_monday() else '1'
+    subprocess.call(['bash', './fetch_data.sh', day])
 
     path_to_data = 'data'
     process_col = {
@@ -28,6 +28,7 @@ def main():
     excel_path = config['EXCEL_PATH']
     sheet_name = 'data of Foxpro'
 
+    print('Processing excel file...')
     warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
     workbook, sheet = load_excel(excel_path, sheet_name)
 
