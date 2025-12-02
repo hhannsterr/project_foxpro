@@ -13,7 +13,7 @@ class process:
         self.sheet = sheet
         self.fill = PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
         self.font = Font(name='Tahoma', size=8)
-        self.format = '0'
+        self.format = '#,##0'
 
     def get_info(self, report: str) -> None:
         items = report.strip().split('\n')
@@ -74,10 +74,9 @@ class process:
             cell = self.sheet[f'{id_col}{row_num}']
             cell.value = product
             cell.font = self.font
-            cell.number_format = self.format
 
             cell = self.sheet[f'{pc_col}{row_num}']
-            cell.value = good_pc
+            cell.value = int(good_pc.replace(',', ''))
             cell.font = self.font
             cell.number_format = self.format
 
