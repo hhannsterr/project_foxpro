@@ -11,6 +11,7 @@ def main():
 
     config = dotenv_values('.env')
 
+    # os.environ['DAY_TYPE'] = '2' if is_monday() else '1'
     subprocess.call(['bash', './fetch_data.sh'])
 
     path_to_data = 'data'
@@ -21,6 +22,7 @@ def main():
         'grind': ['U', 'V'],
         'sht': ['Y', 'Z'],
         'galv': ['AC', 'AD'],
+        'dmg': ['AG', 'AH'],
     }
 
     excel_path = config['EXCEL_PATH']
