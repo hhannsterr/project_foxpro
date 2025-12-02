@@ -1,0 +1,28 @@
+
+dambe   01/11/2025
+-----
+ABGBU3438              80
+ABGT34                 35
+BBGL901                80
+BBGL90112               3
+BBGL90114              16
+BBGL90212               2
+BBGP1                   5
+BBGRL112                3
+BBGRS112               26
+BBGRT221               14
+BBGS1                  20
+BBGT1                  30
+BBGT112                 2
+EAGP12                 40
+EAGRNI212112             5
+EAGRS112               20
+EBGL452                 5
+EBGNI1                 14
+EBGNI112                2
+EBGNI114                4
+EBGNI2                 12
+EBGRNI112114            20
+EBGRS134                4
+EBGSL901               85
+EBGT112                 9
