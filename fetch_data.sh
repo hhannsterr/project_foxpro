@@ -3,15 +3,17 @@
 echo "Starting Foxpro Data Fetch..."
 
 source .env
-DAYS=$1
+YEAR=$1
+MONTH=$2
+DAY=$3
 
 TEMP_PRG=$(mktemp).prg
 cat > "$TEMP_PRG" << EOF
 SET DEFAULT TO $DATA_PATH
 
 TODAY = DATE()
-OSDT = DATE(2025, 11, 01)
-OEDT = TODAY - $DAYS
+OSDT = DATE($YEAR, $MONTH, $DAY)
+OEDT = TODAY - 1
 OUTPUT_PATH = '$OUTPUT_PATH'
 DATA_PATH = '$DATA_PATH'
 

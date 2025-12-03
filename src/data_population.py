@@ -12,21 +12,19 @@ class process:
         self.font = Font(name='Tahoma', size=8)
         self.format = '#,##0'
 
-    def get_info(self, report: str) -> None:
-        items = report.strip().split('\n')
-
-        for item in items:
-            product, good_pc = item.strip().split()
-            self.products.append(product)
-            self.good_pcs.append(good_pc)
-
-    def get_info_gal(self, report: str) -> None:
+    def get_info(self, report: str, gal: bool = False) -> None:
+        if report == '':
+            return
+        
         items = report.strip().split('\n')
         bg_index, next_index = 2, 3
 
         for item in items:
             product, good_pc = item.strip().split()
-            product = product[:bg_index] + 'b' + product[next_index:]
+
+            if gal:
+                product = product[:bg_index] + 'b' + product[next_index:]
+
             self.products.append(product)
             self.good_pcs.append(good_pc)
 
@@ -35,25 +33,23 @@ class process:
         full_path = path + '/' + filename
         with open(full_path, "r") as file:
             content = file.read()
-            content = content.replace('\x1a', '')
-            self.date, content = get_date(content)
 
-            if is_gal(filename):
-                self.get_info_gal(content)
+        content = content.replace('\x1a', '')
+        self.date, content = get_date(content)
 
-            elif not is_mould(filename):
-                self.get_info(content)
+        if not is_mould(filename):
+            self.get_info(content, is_gal(filename))
 
-            else:
-                reports = content.split('---')
-                
-                old_report = reports[1]
-                new_report = reports[3]
+        else:
+            reports = content.split('---')
+            
+            old_report = reports[1]
+            new_report = reports[3]
 
-                if old_report != '\n':
-                    self.get_info(old_report)
-                if new_report != '\n':
-                    self.get_info(new_report)
+            if old_report != '\n':
+                self.get_info(old_report)
+            if new_report != '\n':
+                self.get_info(new_report)
 
     def populate_data(self, columns: list[str]) -> None:
         id_col, pc_col = columns
@@ -89,9 +85,6 @@ def is_mould(filename: str) -> bool:
 def get_date(content: str) -> tuple[str]:
     date, content = content.split('-----')
     return date.strip(), content.strip()
-
-def is_monday() -> bool:
-    return datetime.now().weekday() == 0
 
 def load_excel(excel_path: str, sheet_name: str):
     workbook = load_workbook(excel_path)

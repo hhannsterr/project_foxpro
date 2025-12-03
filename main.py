@@ -4,15 +4,16 @@ import warnings
 
 from dotenv import dotenv_values
 from src.data_population import process
-from src.data_population import is_monday, load_excel, clean_path
+from src.data_population import load_excel, clean_path
+from src.general import get_date, save_date
 
 
 def main():
 
     config = dotenv_values('.env')
 
-    day = '2' if is_monday() else '1'
-    subprocess.call(['bash', './fetch_data.sh', day])
+    year, month, day = get_date()
+    subprocess.call(['bash', './fetch_data.sh', year, month, day])
 
     path_to_data = 'data'
     process_col = {
@@ -41,6 +42,7 @@ def main():
         temp.populate_data(columns)
 
     workbook.save('test.xlsx') # directory to be changed
+    # save_date()
 
 
 if __name__ == '__main__':
