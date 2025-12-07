@@ -28,34 +28,34 @@ This project automates the data collection and reporting workflow for production
 2. **Install dependecies**
 
     ```
-    python -m pip install -r requirements.txt
+    python -m venv foxpro
+    foxpro\Scripts\activate
     ```
-    📁 Project Structure
-    ```.
-    ├── fetch_data.sh
-    ├── main.py 
-    └── data
+    ```
+    python -m pip install -r requirements.txt
     ```
 
 ## 🚦 Usage
-### Option 1: Live Data Extraction (with FoxPro)
-1. Extract data from FoxPro:
+### Initial Setup
+1. **Create .env file following the provided example**
 
     ```
-    ./fetch_data.sh
+    example_env.txt
     ```
+2. **Set date to the last day the data is updated**
 
-    This executes the FoxPro PRG files and exports data to data/raw/ as text files.
-
-2. Process data and update Excel:
+    ```
+    log.json
+    ```
+3. **Run Program**
 
     ```
     python main.py
     ```
 
-### Option 2: Use Example Data (without FoxPro)
-If you don't have FoxPro installed, use the provided example data:
+### Subsequent Runs
+1. **Date in log.json are updated automatically so you can just skip to the main program**
 
-```
-python main.py
-```
+    ```
+    python main.py
+    ```
