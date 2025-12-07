@@ -12,7 +12,7 @@ class process:
         self.font = Font(name='Tahoma', size=8)
         self.format = '#,##0'
 
-    def get_info(self, report: str, gal: bool = False) -> None:
+    def get_info(self, report: str, special: bool = False) -> None:
         if report == '':
             return
         
@@ -22,8 +22,9 @@ class process:
         for item in items:
             product, good_pc = item.strip().split()
 
-            if gal:
-                product = product[:bg_index] + 'b' + product[next_index:]
+            if special:
+                if product[bg_index] == 'B':
+                    product = product[:bg_index] + 'b' + product[next_index:]
 
             self.products.append(product)
             self.good_pcs.append(good_pc)
@@ -38,7 +39,7 @@ class process:
         self.date, content = get_date(content)
 
         if not is_mould(filename):
-            self.get_info(content, is_gal(filename))
+            self.get_info(content, is_special(filename))
 
         else:
             reports = content.split('---')
@@ -76,8 +77,8 @@ class process:
             row_num += 1
 
 
-def is_gal(filename: str) -> bool:
-    return filename == 'GALV_SUMMARY.TXT'
+def is_special(filename: str) -> bool:
+    return filename == 'GALV_SUMMARY.TXT' or filename == 'DMG_SUMMARY.TXT'
 
 def is_mould(filename: str) -> bool:
     return filename == 'MOULD_SUMMARY.TXT'
