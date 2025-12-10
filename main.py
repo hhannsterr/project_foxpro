@@ -24,6 +24,7 @@ def main():
         'sht': ['Y', 'Z'],
         'galv': ['AC', 'AD'],
         'dmg': ['AG', 'AH'],
+        'loc': ['I', 'J']
     }
 
     excel_path = config['EXCEL_PATH']
