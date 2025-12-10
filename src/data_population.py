@@ -23,7 +23,7 @@ class process:
             product, good_pc = item.strip().split()
 
             if special:
-                if product[bg_index] != 'B':
+                if product[bg_index] == 'B':
                     product = product[:bg_index] + 'b' + product[next_index:]
 
             self.products.append(product)
