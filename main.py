@@ -32,7 +32,7 @@ def main():
 
     print('Processing excel file...')
     warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
-    workbook, sheet = load_excel(excel_path, sheet_name)
+    workbook, sheet = load_excel(excel_path, sheet_name) # type: ignore
 
     process_paths = os.listdir(path_to_data)
     for process_path in process_paths:

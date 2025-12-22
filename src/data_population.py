@@ -83,7 +83,7 @@ def is_special(filename: str) -> bool:
 def is_mould(filename: str) -> bool:
     return filename == 'MOULD_SUMMARY.TXT'
 
-def get_date(content: str) -> tuple[str]:
+def get_date(content: str) -> tuple[str, str]:
     date, content = content.split('-----')
     return date.strip(), content.strip()
 
